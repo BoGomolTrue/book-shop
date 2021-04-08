@@ -1,0 +1,13 @@
+@keyframes slider_one {
+    25%
+    {
+        opacity:1
+    }
+    40%{
+        opacity:0
+    }
+}
+div.slider-commercial img:nth-child(1){animation-delay:4s}
+div.slider-commercial img:nth-child(2){animation-delay:0s}
+div.slider-commercial img:nth-child(3){animation-delay:4s}
+div.slider-commercial img:nth-child(4){animation-delay:0}

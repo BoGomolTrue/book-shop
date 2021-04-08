@@ -1,0 +1,31 @@
+button.btn.btn-info:hover {
+  color: rgb(236, 236, 231);
+}
+
+nav.menu>.right>.dropdown button:hover {
+  color: rgb(236, 236, 231);
+}
+
+nav.menu>.right>a:hover {
+  color: rgb(236, 236, 231);
+}
+
+nav.admin-menu a:hover {
+  color: rgb(236, 236, 231);
+}
+
+
+.navbar-profile ul li:hover {
+  background-color: gray;
+}
+nav.catalog-menu>.catalog button:hover {
+  color: rgb(236, 236, 231);
+}
+ul.categories li a:hover{
+  color: blue;
+  text-decoration: revert;
+}
+ul.publish li a:hover{
+  color: blue;
+  text-decoration: revert;
+}
