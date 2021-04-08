@@ -4,7 +4,7 @@
 	 ?>
 	 <body>
 </head>
-	<?php require 'str/user-content-str/menus.php';
+	<?php require 'str/user-content-str/menu.php';
 	  ?>
 <footer>
 </body>
