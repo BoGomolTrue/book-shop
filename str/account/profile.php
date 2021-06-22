@@ -129,13 +129,14 @@
                                 <tr>
                                     <td class="field">Мои заказы</td>
                                     <td class="value">
-                                        0
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="field">Количество покупок</td>
-                                    <td class="value">
-                                        0
+                                        <?php 
+                                            $uId = $_SESSION['user_id'];
+                                            $select_order="select count(id) from order_history where _UserID = '$uId'";
+                                            $query_order=mysqli_query($link,$select_order);
+                                            $num_order=mysqli_num_rows($query_order);
+                                            $row_order = mysqli_fetch_array($query_order);
+                                            echo $row_order[0];
+                                        ?>
                                     </td>
                                 </tr>
                             </tbody>

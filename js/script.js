@@ -592,7 +592,7 @@
     
                         $('.error-message-emailprofile').html("Книга была выслана на почту, которая указана в профиле!");
                         $('.error-message-emailprofile').fadeIn(300);
-                        $('.error-message-emailprofile').fadeOut(2400);
+                        $('.error-message-emailprofile').fadeOut(4600);
     
                         $.get(
                             'modules/user-content-modules/basket-popup/basket-content-ajax.php',
@@ -704,6 +704,17 @@
         $(".btn.btn-primary.dropdown-toggle.pub").val(publish);
     })
     /*Стиль*/
+    $(document).on('click', '.go-to-history', function(){
+        event.preventDefault();
+        var link_url = $(this).attr('href');
+        $.get(
+            'str/user-content-str/cart-history.php', {
+        },
+        function onAjaxSuccess(data) {
+            document.getElementById('page-content').innerHTML = data;
+            $('.offcanvas-close').click();
+        })
+    })
     $(document).on('click', '.logo', function () {
         $('div.logo-popup').fadeIn(300);
         $('div.logo-popup').fadeOut(600);
@@ -754,6 +765,24 @@
         $('.popup-bg-publish').fadeOut(800);
         $('html').removeClass('no-scroll');
     });
+    $(document).on('click', '.reportsexcel', function () {
+        event.preventDefault();
+        var date_one = $('.date_from-a').attr('href');
+        var date_two = $('.date_to-a').attr('href');
+        $.ajax({
+            url: 'modules/excel.php',
+            method: 'post',
+            dataType: 'html',
+            type: 'post',
+            data: ({
+                date_one: date_one,
+                date_two: date_two
+            }),
+            success: function (data) {
+               alert(data);
+            }
+        })
+    })
     $('.reports').click(function () {
         event.preventDefault();
         $.get(
@@ -762,10 +791,21 @@
                 document.getElementById('page-content').innerHTML = data;
             })
     });
+    $(document).on('click', '.report-show', function () {
+        event.preventDefault();
+        $.get(
+            'str/admin-content-str/reports.php', {
+                date_from: $('.date_from').val(),
+                date_to: $('.date_to').val(),
+            },
+            function onAjaxSuccess(data) {
+                document.getElementById('page-content').innerHTML = data;
+            })
+    });
     $('.addiction-book').click(function () {
         event.preventDefault();
         $.get(
-            'str/admin-content-str/reports.php',
+            'str/admin-content-str/product.php',
             function onAjaxSuccess(data) {
                 document.getElementById('page-content').innerHTML = data;
             })
@@ -829,12 +869,6 @@
             $('.error-message-addiction-book.page').html("Данное поле должно быть заполнено!");
             $('.error-message-addiction-book.page').fadeIn(300);
             $('.error-message-addiction-book.page').fadeOut(1000);
-            return;
-        }
-        if (data.get('book_sbn').length == 0) {
-            $('.error-message-addiction-book.isbn').html("Данное поле должно быть заполнено!");
-            $('.error-message-addiction-book.isbn').fadeIn(300);
-            $('.error-message-addiction-book.isbn').fadeOut(1000);
             return;
         }
         if (data.get('book_age').length == 0) {
@@ -1209,7 +1243,7 @@
         var txt = $(this).val();
         var data = new FormData(searchhh);
         data.append('search', txt);
-        if(txt != '' && txt.length >= 2){
+        if(txt != '' && txt.length >= 1){
             $('#s_result').css('display', 'block');
             $.ajax({
                 url: 'modules/user-content-modules/search.php',

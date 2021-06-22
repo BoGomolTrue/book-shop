@@ -25,7 +25,7 @@
     }
     else{
         $insert = "insert into users  (_Name, _LastName, _PhoneNumber, _Balance, _EMail, _Password, _DateOfBirth,  _Role, _DateOfRegister, _Sex) 
-        values ('$UsName', '$UsLastName', '$UsPhoneNumber', 0, 'none', '$UsPasswordTwo', 'none', 0, '$date', '$UsSex')";
+        values ('$UsName', '$UsLastName', '$UsPhoneNumber', 1000, 'none', '$UsPasswordTwo', '$date', 0, '$date', '$UsSex')";
         $query_one=mysqli_query($link,$insert);
     }
 ?>

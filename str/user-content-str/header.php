@@ -13,6 +13,7 @@
   <link rel="stylesheet" href="css/other/hover.css" />
   <link rel="stylesheet" href="css/other/profile.css" />
   <link rel="stylesheet" href="css/other/products.css" />
+  <link rel="stylesheet" href="css/other/report.css" />
   <link rel="shortcut icon" href="img/Robinweatherall-Library-Books.ico" type="image/x-icon">
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
@@ -48,8 +49,9 @@
             </button>
             <ul class="dropdown-menu dropdown-menu-right-user us" role="menu" aria-labelledby="menu1">
               <li role="presentation"><a role="menuitem" class="profile-page" tabindex="-1" href="str/account/profile.php"><i class="fa fa-user" style="color: black; padding-right: 10px;" aria-hidden="true"></i>Мой профиль</a></li>
-              <li role="presentation"><a role="menuitem" tabindex="-1" href="#"><i class="fa fa-address-book" style="color: black; padding-right: 10px;" aria-hidden="true"></i>Мои заказы</a></li>
-              <li role="presentation" class="divider"></li>
+              <li role="presentation"><a role="menuitem" class="go-to-history" tabindex="-1" href="../../modules/history-cart-modules/cart-content-ajax.php"><i class="fa fa-address-book" style="color: black; padding-right: 10px;" aria-hidden="true"></i>Мои заказы</a></li>
+              <br>
+              <li role="presentation" style="border-top: 3px solid #bbb;"></li>
               <li role="presentation"><a role="menuitem" tabindex="-1" href="#"><i class="fa fa-exclamation" style="color: black; padding-right: 10px;" aria-hidden="true"></i>Сообщить о проблеме</a></li>
               <li role="presentation"><a role="menuitem" tabindex="-1" href="modules/account/exit.php"><i class="fa fa-times" style="color: black; padding-right: 10px;" aria-hidden="true"></i>Выход</a></li>
             </ul>
@@ -130,6 +132,12 @@
           <?php include("modules/user-content-modules/publish.php"); ?>
           </ul>
           </div>
+          <div class="column">
+          <p class="title">Прочее</p>
+          <ul class="categories">
+          <li role='presentation'><a role='menuitem' href='16'>Бесплатные книги</a></li>
+          </ul>
+          </div>
           
     </div>
     </div>
@@ -207,4 +215,6 @@
 	  });
     </script>
   </header>
-  <!--<script>!function(e,t,a){var c=e.head||e.getElementsByTagName("head")[0],n=e.createElement("script");n.async=!0,n.defer=!0, n.type="text/javascript",n.src=t+"/static/js/chat_widget.js?config="+JSON.stringify(a),c.appendChild(n)}(document,"https://app.engati.com",{bot_key:"3987889cd0bd4918",welcome_msg:true,branding_key:"default",server:"https://app.engati.com",e:"p" });</script>!-->
+  <?php if($_SESSION['user_role'] == 0){ ?>
+ <script>!function(e,t,a){var c=e.head||e.getElementsByTagName("head")[0],n=e.createElement("script");n.async=!0,n.defer=!0, n.type="text/javascript",n.src=t+"/static/js/chat_widget.js?config="+JSON.stringify(a),c.appendChild(n)}(document,"https://app.engati.com",{bot_key:"3987889cd0bd4918",welcome_msg:true,branding_key:"default",server:"https://app.engati.com",e:"p" });</script>
+ <?php }  ?>

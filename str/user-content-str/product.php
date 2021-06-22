@@ -65,6 +65,10 @@
                             }
                             ?>+</a></span>
                             <form id="addamount" action="" method="post" enctype="multipart/form-data">
+                            <?php if($row['_Price'] == 0){
+
+                            }else{
+                                 ?>
                             <?php if($row_two['_Role'] == 1){ ?>
                             <span class="amountttt"><strong>Кол-во на складе:</strong> <a class='am-boo' style="color: white;" rel="tag">
                             <?php echo $row['_Amount']; ?></a> <a  style="cursor:pointer; color: rgba(246, 48, 112, 1); padding: 20px;" class="m-l-10 amounts">Изменить</a>
@@ -75,7 +79,8 @@
                             <span class="discountttt"><strong>Скидка:</strong>
                              <a class='discc' style="color: white;"><?php echo $row["_Discount"]; ?> %</a><a style="cursor:pointer; color: rgba(246, 48, 112, 1); padding: 20px;" class="m-l-10 discounts">Изменить</a></span>
                              <span class="error-message-addiction-book discountsss"style="display: block; text-align: center; color: gray; font-size: 10pt;"></span>
-                             <?php } ?>
+                             <?php }
+                             } ?>
                             </form>
                         </div>
                         <div class="m-bot15"> <strong>Цена:</strong>
@@ -90,12 +95,18 @@
                                     <?php } ?>
                        
                         </div>
+                        <?php if ($row["_Price"] > 0){ ?>
+                        <?php if($row['_Amount'] > 1){ ?>
                             <div style="display: flex;"><a class="book_id-buy-productpage" href="<?php echo $book_id; ?>"><button class="btn btn-round btn-danger" type="button">Добавить в корзину</button></a>
-                            <?php if($row['_Price'] == 0) {?>
-                                <a style="padding: 0 20px;" href="../../books/pdf/<?php echo $row['_Link'];?>"><button class="btn btn-round btn-danger" type="button">Читать бесплатно</button></a>
+                            <?php }else{ ?>
+                            <br>
+                             <div style="text-align: right;"> <span class="discountttt"><strong>Данной книги в настоящий момент нет в наличии</strong> </div>
                             <?php } ?>
                             </div>
                             <span class="error-message-addiction-book buy"style="display: block; color: gray; font-size: 10pt;"></span>
+                        <?php }else{ ?>
+                            <a href="../../books/pdf/<?php echo $row['_Link'];?>"><button class="btn btn-round btn-danger" type="button">Читать бесплатно</button></a>
+                        <?php } ?>
                     </div>
                 </div>
             </section>

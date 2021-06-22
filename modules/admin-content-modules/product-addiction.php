@@ -12,8 +12,13 @@
     $img_str = $_FILES['file']['name'];
     $pdf_str = $_FILES['filepdf']['name'];
 
+    $amountBook = 1;
+    if($book_price == 0){
+        $amountBook = 25;
+    }
+
     $insert = "insert into books  (_Author, _NameBook, _Price, _Discount, _Amount, _Page, _CategoryID, _PublishID,  _YearPublish, _Description, _Photo, _AgeRest, _Link) 
-    values ('$book_author', '$book_name', '$book_price', 0, 1, $book_page, $book_category, $book_publish, $book_year, '$book_annotation', '$img_str', '$book_age', '$pdf_str')";
+    values ('$book_author', '$book_name', '$book_price', 0, '$amountBook', $book_page, $book_category, $book_publish, $book_year, '$book_annotation', '$img_str', '$book_age', '$pdf_str')";
     $query_one=mysqli_query($link,$insert);
 
     move_uploaded_file($_FILES['file']['tmp_name'], '../../img/img_books/' . $_FILES['file']['name']);

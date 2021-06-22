@@ -9,5 +9,4 @@
   </div>
   <script src="js/other/jquery.min.js"></script>
   <script src="js/script.js"></script>
-  <script src="js/action.js"></script>
   <script src="js/other/jquery.maskedinput.js"></script>
